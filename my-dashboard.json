@@ -1,0 +1,126 @@
+{
+  "datasource": {
+    "type": "prometheus",
+    "uid": "fc71b73c-a01d-46c5-bd3a-9ee7f425b070"
+  },
+  "description": "",
+  "fieldConfig": {
+    "defaults": {
+      "mappings": [],
+      "thresholds": {
+        "mode": "absolute",
+        "steps": [
+          {
+            "color": "green",
+            "value": null
+          },
+          {
+            "color": "red",
+            "value": 80
+          }
+        ]
+      },
+      "color": {
+        "mode": "thresholds"
+      },
+      "unit": "humidity"
+    },
+    "overrides": []
+  },
+  "gridPos": {
+    "h": 11,
+    "w": 13,
+    "x": 0,
+    "y": 0
+  },
+  "id": 1,
+  "options": {
+    "reduceOptions": {
+      "values": false,
+      "calcs": [
+        "lastNotNull"
+      ],
+      "fields": ""
+    },
+    "orientation": "auto",
+    "showThresholdLabels": false,
+    "showThresholdMarkers": true
+  },
+  "pluginVersion": "9.5.0",
+  "targets": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "fc71b73c-a01d-46c5-bd3a-9ee7f425b070"
+      },
+      "editorMode": "code",
+      "expr": "100 - (avg by (instance) (rate(node_cpu_seconds_total{mode=\"idle\"}[5m])) * 100)",
+      "interval": "",
+      "legendFormat": "__auto",
+      "range": true,
+      "refId": "A"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "fc71b73c-a01d-46c5-bd3a-9ee7f425b070"
+      },
+      "editorMode": "code",
+      "expr": "node_load1",
+      "hide": false,
+      "legendFormat": "__auto",
+      "range": true,
+      "refId": "B"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "fc71b73c-a01d-46c5-bd3a-9ee7f425b070"
+      },
+      "editorMode": "code",
+      "expr": "node_load5",
+      "hide": false,
+      "legendFormat": "__auto",
+      "range": true,
+      "refId": "C"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "fc71b73c-a01d-46c5-bd3a-9ee7f425b070"
+      },
+      "editorMode": "code",
+      "expr": "node_load15",
+      "hide": false,
+      "legendFormat": "__auto",
+      "range": true,
+      "refId": "D"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "fc71b73c-a01d-46c5-bd3a-9ee7f425b070"
+      },
+      "editorMode": "code",
+      "expr": "(node_memory_MemAvailable_bytes) / 1024 / 1024",
+      "hide": false,
+      "legendFormat": "__auto",
+      "range": true,
+      "refId": "E"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "fc71b73c-a01d-46c5-bd3a-9ee7f425b070"
+      },
+      "editorMode": "code",
+      "expr": "(node_filesystem_avail_bytes{fstype!~\"tmpfs|squashfs|overlay\"}) / 1024 / 1024 / 1024",
+      "hide": false,
+      "legendFormat": "__auto",
+      "range": true,
+      "refId": "F"
+    }
+  ],
+  "title": "Panel",
+  "type": "gauge"
+}
